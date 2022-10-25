@@ -1,0 +1,23 @@
+.MyInputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.MyInputCaption {
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.MyInput {
+    height: 42px;
+    padding: 0 10px;
+    border-radius: 5px;
+    background: #ffffff;
+    border: none;
+    font-size: 20px;
+}
+
+*:focus {
+    outline: 1px solid lightgray;
+}

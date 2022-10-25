@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Jost';
+    src: local('Jost'), url('./assets/fonts/Jost.woff') format('woff');
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Jost';
+    background-color: #FEFAFF;
+}
+
