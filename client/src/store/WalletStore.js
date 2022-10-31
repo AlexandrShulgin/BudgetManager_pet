@@ -9,6 +9,7 @@ export default class WalletStore {
             {id: 4, name: "wal4", income: 2, expense: 1, amount: 1, userId: 2},
             {id: 5, name: "wal5", income: 5, expense: 1, amount: 4, userId: 2},
         ]
+        this._selectetWallet = {}
         makeAutoObservable(this)
     }
 
@@ -16,8 +17,16 @@ export default class WalletStore {
         this._wallets = wallets
     }
 
+    setSelectedWallet(wallet) {
+        this._selectetWallet = wallet
+    }
+
     get wallets() {
         return this._wallets
+    }
+
+    get selectedWallet() {
+        return this._selectetWallet
     }
 
 }

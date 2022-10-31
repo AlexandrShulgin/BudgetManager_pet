@@ -1,0 +1,28 @@
+.List {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 343px;
+    min-height: 150px;
+    padding: 10px 0;
+    border-radius: 10px;
+    overflow-y: scroll;
+    background-color: #FAEFF7;
+}
+
+.ListItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 310px;
+    height: 20px;
+    padding: 0 15px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.active {
+    background: linear-gradient(90deg, rgba(100, 218, 90, 0.5) 0%, rgba(174, 236, 169, 0.5) 37.85%, rgba(255, 255, 255, 0.485965) 97.4%, #FFFFFF 97.41%);
+}

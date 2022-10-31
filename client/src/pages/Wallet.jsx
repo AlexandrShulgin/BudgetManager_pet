@@ -1,9 +1,17 @@
-import React from "react";
+import { observer } from "mobx-react-lite";
+import React, { useEffect, useState } from "react";
+import { useContext } from "react";
+import { Context } from "..";
 import DashboardItem from "../components/UI/DashboardItem";
 import MyContainer from "../components/UI/MyContainer";
 import WalletList from "../components/WalletList";
 import classes from "./Wallet.module.css"
-const Wallet = () => {
+const Wallet = observer(() => {
+    const {wallet} = useContext(Context)
+    const [name, setName] = useState('name')
+    useEffect(() => {
+        setName(wallet.selectedWallet.name)
+    }, [wallet.selectedWallet])
     return ( 
         <div className={classes.Wallet}>
             <MyContainer className={classes.MenuContainer}>
@@ -13,15 +21,15 @@ const Wallet = () => {
             <div className={classes.WalletContainer}>    
                 <div className={classes.WalletDashboard}>
                     <div className={classes.DashboardMenu}>
-                        <MyContainer>Имя</MyContainer>
+                        <MyContainer>{name}</MyContainer>
                         <MyContainer>Добавить операцию</MyContainer>
                         <MyContainer>Удалить операцию</MyContainer>
                         <MyContainer>Режим прогноза</MyContainer>
                     </div>
                     <MyContainer className={classes.Dashboard}>
-                        <DashboardItem color={"green"} title={"Доход в этом месяце"} amount={"123"}/>
-                        <DashboardItem color={"red"} title={"Расход в этом месяце"} amount={"123"}/>
-                        <DashboardItem color={"yellow"} title={"Сумма на счете"} amount={"123"}/>
+                        <DashboardItem type={"income"}/>
+                        <DashboardItem type={"expense"}/>
+                        <DashboardItem type={"amount"}/>
                     </MyContainer>
                 </div>
                 <div className={classes.History}>
@@ -31,6 +39,6 @@ const Wallet = () => {
             <div></div>
         </div>
      );
-}
+})
  
 export default Wallet;
