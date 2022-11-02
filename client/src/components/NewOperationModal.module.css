@@ -1,0 +1,9 @@
+.NewOperationModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
+    font-weight: lighter;
+}

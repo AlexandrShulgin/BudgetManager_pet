@@ -1,8 +1,9 @@
+
 import classes from './MyContainer.module.css'
 
 const MyContainer = (props) => {
     return ( 
-        <div className={`${classes.MyContainer} ${props.className}`}>
+        <div onClick={props.clickHandler} className={`${classes.MyContainer} ${props.className}`}>
             
             {props.children}
             

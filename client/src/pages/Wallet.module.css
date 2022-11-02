@@ -1,4 +1,8 @@
 @media screen and (min-width: 1000px) {
+    .click {
+        cursor: pointer;
+    }
+    
     .Wallet {
         width: 100vw;
         height: 100vh;
