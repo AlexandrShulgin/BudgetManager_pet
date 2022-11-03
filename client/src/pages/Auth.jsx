@@ -1,7 +1,7 @@
 import React from "react";
-import MyButton from "../components/UI/MyButton";
-import MyInput from "../components/UI/MyInput";
-import MyContainer from '../components/UI/MyContainer'
+import MyButton from "../components/UI/MyButton/MyButton"
+import MyInput from "../components/UI/MyInput/MyInput";
+import MyContainer from '../components/UI/MyContainer/MyContainer'
 import classes from './Auth.module.css'
 import { NavLink, useLocation } from 'react-router-dom'
 import { LOGIN_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";

@@ -1,8 +1,7 @@
 import { useContext } from "react"
 import { observer } from "mobx-react-lite"
-import { Context } from "..";
+import { Context } from "../..";
 import classes from './WalletList.module.css'
-import { useState } from "react";
 
 const WalletList = observer((props) => {
     const {wallet} = useContext(Context)

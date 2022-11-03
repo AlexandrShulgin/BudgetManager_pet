@@ -2,11 +2,11 @@ import { observer } from "mobx-react-lite";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Context } from "..";
-import NewOperationModal from "../components/NewOperationModal";
-import DashboardItem from "../components/UI/DashboardItem";
-import MyContainer from "../components/UI/MyContainer";
-import MyModal from "../components/UI/MyModal";
-import WalletList from "../components/WalletList";
+import NewOperationModal from "../components/NewOperationModal/NewOperationModal";
+import DashboardItem from "../components/UI/DashboardItem/DashboardItem";
+import MyContainer from "../components/UI/MyContainer/MyContainer";
+import MyModal from "../components/UI/MyModal/MyModal";
+import WalletList from "../components/WalletList/WalletList";
 import classes from "./Wallet.module.css"
 const Wallet = observer(() => {
     const [modal, setModal] = useState(false)

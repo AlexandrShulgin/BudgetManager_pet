@@ -1,10 +1,10 @@
 import classes from './DashboardItem.module.css'
-import incIcon from '../../assets/images/income.png'
-import expIcon from '../../assets/images/expence.png'
-import amtIcon from '../../assets/images/amount.png'
-import { Context } from '../..'
+import incIcon from '../../../assets/images/income.png'
+import expIcon from '../../../assets/images/expence.png'
+import amtIcon from '../../../assets/images/amount.png'
 import { useContext, useEffect, useState } from 'react'
 import { observer } from 'mobx-react-lite'
+import { Context } from '../../..'
 
 const DashboardItem = observer((props) => {
     const {wallet} = useContext(Context)

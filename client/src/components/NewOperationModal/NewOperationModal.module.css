@@ -6,4 +6,16 @@
     gap: 15px;
     padding: 30px;
     font-weight: lighter;
+    font-size: 18px;
+}
+
+.NewOperationModal form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.RadioArea {
+    display: flex;
+    gap: 5px;
 }
