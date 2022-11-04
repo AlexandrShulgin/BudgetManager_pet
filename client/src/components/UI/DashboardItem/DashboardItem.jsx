@@ -8,10 +8,12 @@ import { Context } from '../../..'
 
 const DashboardItem = observer((props) => {
     const {wallet} = useContext(Context)
-    const [money, setMoney] = useState({income: 0, expense: 0, amount: 0})
+    const wal = wallet.wallets[wallet.selectedWallet.id-1]
+    const [money, setMoney] = useState({income: wal.income, expense: wal.expense, amount: wal.amount})
     useEffect(() => {
-        setMoney({income: wallet.selectedWallet.income, expense: wallet.selectedWallet.expense, amount: wallet.selectedWallet.amount})
-    }, [wallet.selectedWallet])
+        setMoney({income: wal.income, expense: wal.expense, amount: wal.amount})
+    }, [wal, wal.income, wal.expense, wal.amount
+    ])
     return ( 
         <div className={classes.DashboardItem}>
             {props.type === "income" ?

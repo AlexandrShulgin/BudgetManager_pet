@@ -1,10 +1,11 @@
 import classes from './MyButton.module.css'
 
 const MyButton = (props) => {
+    
     return ( 
         <button
-            style={{width: props.width, height: props.height, backgroundColor: props.backgroundColor}} 
-            className={classes.MyButton}>
+            className={`${classes.MyButton} ${props.className}`}
+            type={props.type}>
                 {props.children}
         </button>
      );

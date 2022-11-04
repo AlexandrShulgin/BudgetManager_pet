@@ -1,5 +1,9 @@
 import {makeAutoObservable} from 'mobx';
+import { configure } from "mobx"
 
+configure({
+    enforceActions: "never",
+})
 export default class WalletStore {
     constructor() {
         this._wallets = [

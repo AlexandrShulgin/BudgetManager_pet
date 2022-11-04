@@ -33,7 +33,7 @@ const Wallet = observer(() => {
                 <div className={classes.WalletDashboard}>
                     <div className={classes.DashboardMenu}>
                         <MyContainer>{name}</MyContainer>
-                        <MyContainer className={classes.click} clickHandler={() => clickHandler(<NewOperationModal/>)}>Добавить операцию</MyContainer>
+                        <MyContainer className={classes.click} clickHandler={() => clickHandler(<NewOperationModal visible={setModal}/>)}>Добавить операцию</MyContainer>
                         <MyContainer>Удалить операцию</MyContainer>
                         <MyContainer>Режим прогноза</MyContainer>
                     </div>
