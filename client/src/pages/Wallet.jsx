@@ -19,6 +19,7 @@ const Wallet = observer(() => {
     const [name, setName] = useState('name')
     const [modalContent, setModalContent] = useState()
     const [del, setDel] = useState(false)
+    const [sortType, setSortType] = useState("fromHigherDate")
 
     useEffect(() => {
         setName(wallet.selectedWallet.name)
@@ -52,7 +53,7 @@ const Wallet = observer(() => {
                                      clickHandler={() => clickHandler(<NewOperationModal visible={setModal}/>)}>
                             Добавить операцию
                         </MyContainer>
-                        <MyContainer className={classes.click} clickHandler={() => setDel(true)}>Удалить операцию</MyContainer>
+                        <MyContainer className={classes.click} clickHandler={() => del === true ? setDel(false) : setDel(true)}>Удалить операцию</MyContainer>
                         {/*<MyContainer>Режим прогноза</MyContainer>*/}
                     </div>
                     <MyContainer className={classes.Dashboard}>
@@ -66,12 +67,26 @@ const Wallet = observer(() => {
                 <div className={classes.History}>
                     <div className={classes.HistoryMenu}>
                             <MyContainer>История</MyContainer>
-                            <MyContainer>Дата</MyContainer>
-                            <MyContainer>Сумма</MyContainer>
+
+                            <MyContainer className={classes.click} 
+                                         clickHandler={sortType === "fromHigherDate" ? 
+                                                       () => setSortType("fromLowerDate") : 
+                                                       () => setSortType("fromHigherDate")}>
+                                                        
+                                Дата
+                            </MyContainer>
+
+                            <MyContainer className={classes.click} 
+                                         clickHandler={sortType === "fromHigherAmount" ? 
+                                                       () => setSortType("fromLowerAmount") : 
+                                                       () => setSortType("fromHigherAmount")}>
+                                Сумма
+                            </MyContainer>
+
                             <MyContainer>Расширенный фильтр</MyContainer>
                         </div>
                         <MyContainer className={classes.HistoryList}>
-                            <HistoryList isDeletable={del} setIsDeletable={setDel}/>
+                            <HistoryList isDeletable={del} setIsDeletable={setDel} sortType={sortType} setSortType={setSortType}/>
                         </MyContainer>
                 </div>
 

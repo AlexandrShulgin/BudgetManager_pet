@@ -78,7 +78,6 @@ const NewOperationModal = observer((props) => {
                 <div className={classes.RadioArea}>
                     <MyRadio id={"income"} 
                              name={"type"}
-                             checked={"checked"}
                              label={"Доход"}
                              about={"green"}
                              onChange={(e) => setType(e.target.id)}/>
