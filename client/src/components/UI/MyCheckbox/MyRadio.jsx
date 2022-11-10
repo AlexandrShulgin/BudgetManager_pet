@@ -1,9 +1,10 @@
 import classes from "./MyRadio.module.css"
 
-const MyRadio = ({name, id, label, checked, onChange, value}) => {
+const MyRadio = ({name, id, label, checked, onChange, value, about}) => {
     return (
         <div className={classes.MyRadio}>
-            <input 
+            <input
+                about={about} 
                 checked={checked} 
                 name={name} 
                 id={id} 
@@ -11,7 +12,7 @@ const MyRadio = ({name, id, label, checked, onChange, value}) => {
                 className={classes.MyRadio}
                 onChange={onChange}
                 value={value}/>
-            <label htmlFor={id}>{label}</label>
+            <label about={about} htmlFor={id}>{label}</label>
         </div> 
      );
 }

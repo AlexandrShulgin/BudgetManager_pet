@@ -1,4 +1,4 @@
-.NewOperationModal {
+.WalletSettingsModal {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,20 +10,22 @@
     font-size: 18px;
 }
 
-.NewOperationModal form {
+.WalletSettingsModal form {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.RadioArea {
-    display: flex;
-    gap: 5px;
+.RenameButton {
+    width: 100%;
+    height: 42px;
 }
 
-.SubmitButton {
+.DeleteButton {
     width: 100%;
     height: 42px;
     margin-top: 25px;
+    border: 1px solid red;
+    background-color: #FD6665;
 }

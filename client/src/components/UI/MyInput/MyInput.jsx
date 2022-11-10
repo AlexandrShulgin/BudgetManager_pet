@@ -10,7 +10,9 @@ const MyInput = (props) => {
                 required={props.required} 
                 className={classes.MyInput}
                 onChange={props.onChange}
-                value={props.value}/>
+                value={props.value}
+                min={props.min}
+                max={props.max}/>
         </div>
      );
 }

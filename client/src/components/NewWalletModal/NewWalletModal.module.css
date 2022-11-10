@@ -1,16 +1,16 @@
-.NewOperationModal {
+.NewWalletModal {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 15px;
-    width: 400px;
+    width: 600px;
     padding: 30px;
     font-weight: lighter;
     font-size: 18px;
 }
 
-.NewOperationModal form {
+.NewWalletModal form {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -26,4 +26,14 @@
     width: 100%;
     height: 42px;
     margin-top: 25px;
+}
+
+.MoneyArea {
+    display: flex;
+    gap: 5px;
+}
+
+.MoneyArea input {
+    min-width: none;
+    width: 100%;
 }

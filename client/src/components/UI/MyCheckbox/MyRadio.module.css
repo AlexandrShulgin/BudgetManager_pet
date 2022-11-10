@@ -24,18 +24,18 @@
 	user-select: none;
 }
 
-.MyRadio input[id=income]:checked + label {
+.MyRadio input[about=green]:checked + label {
 	background: #72DB68;
 }
-.MyRadio input[id=expense]:checked + label {
+.MyRadio input[about=red]:checked + label {
 	background: #FE6263;
 }
 
-.MyRadio label[for=income]:hover {
+.MyRadio label[about=green]:hover {
 	outline: 3px solid #72DB68;
 	background-color: white;
 }
-.MyRadio label[for=expense]:hover {
+.MyRadio label[about=red]:hover {
 	outline: 3px solid #FE6263;
 	background-color: white;
 }
