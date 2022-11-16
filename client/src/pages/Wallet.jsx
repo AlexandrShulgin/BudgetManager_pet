@@ -8,6 +8,7 @@ import NewWalletModal from "../components/NewWalletModal/NewWalletModal";
 import DashboardItem from "../components/UI/DashboardItem/DashboardItem";
 import MyContainer from "../components/UI/MyContainer/MyContainer";
 import MyModal from "../components/UI/MyModal/MyModal";
+import MySelect from "../components/UI/MySelect/MySelect";
 import WalletList from "../components/WalletList/WalletList";
 import WalletSettingsModal from "../components/WalletSettingsModal/WalletSettingsModal";
 import classes from "./Wallet.module.css"
@@ -83,7 +84,10 @@ const Wallet = observer(() => {
                                 Сумма
                             </MyContainer>
 
-                            <MyContainer>Расширенный фильтр</MyContainer>
+                            <MyContainer>
+                                Статистика
+                            </MyContainer>
+
                         </div>
                         <MyContainer className={classes.HistoryList}>
                             <HistoryList isDeletable={del} setIsDeletable={setDel} sortType={sortType} setSortType={setSortType}/>
@@ -92,7 +96,6 @@ const Wallet = observer(() => {
 
             </div>
             <div></div>
-
             {/*Modal window*/}
             <MyModal visible={modal} setVisible={setModal}>{modalContent}</MyModal>
         </div>

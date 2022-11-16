@@ -6,7 +6,6 @@ import MyButton from '../UI/MyButton/MyButton';
 import MyRadio from '../UI/MyCheckbox/MyRadio';
 import MyInput from '../UI/MyInput/MyInput';
 import classes from './NewWalletModal.module.css'
-//Переделать второй инпут в дропдаун
 const NewWalletModal = observer((props) => {
 
     const {wallet} = useContext(Context)
@@ -39,9 +38,6 @@ const NewWalletModal = observer((props) => {
                          caption={'Имя'}
                          value={walletData.name}
                          onChange={chanheHandler}/>
-
-                <MyInput id={'1'}
-                         caption={'Валюта'}/>
 
                 <div className={classes.MoneyArea}>    
                     <MyInput id={'income'}

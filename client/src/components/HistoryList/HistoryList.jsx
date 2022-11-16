@@ -1,9 +1,17 @@
 import { observer } from "mobx-react-lite";
-import { useState } from "react";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "../..";
 import classes from "./HistoryList.module.css"
+import { CATEGORIES } from "../../utils/consts";
+
+import c_communal from "../../assets/images/c_communal.png"
+import c_credits from "../../assets/images/c_credits.png"
+import c_education from "../../assets/images/c_education.png"
+import c_gift from "../../assets/images/c_gift.png"
+import c_other from "../../assets/images/c_other.png"
+import c_salary from "../../assets/images/c_salary.png"
+import c_shopping from "../../assets/images/c_shopping.png"
+import c_transport from "../../assets/images/c_transport.png"
 
 const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortType}) => {
 
@@ -12,6 +20,8 @@ const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortTyp
     
     const filteredList = history.history.filter(his => his.wal_id === wallet.selectedWallet.id)
     const wal = wallet.wallets.find(item => item.id === wallet.selectedWallet.id)
+
+    const imgPath = '../../assets/images/'
 
     const listSorting = (sortType) => {
         let sortedList
@@ -31,10 +41,56 @@ const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortTyp
             case "fromLowerAmount":
                 sortedList = filteredList.sort((a, b) => a.amount - b.amount)
                 break
+                
+            default:
+                sortedList = filteredList
+                break
         }
         return sortedList
     }
 
+    const setCategoryImage = (category) => {
+        let src
+        switch (category) {
+            case "shopping":
+                src = c_shopping
+                
+                break;
+            case "communal":
+                src = c_communal
+                
+                break;
+            case "credits":
+                src = c_credits
+                
+                break;
+            case "gift":
+                src = c_gift
+                
+                break;
+            case "salary":
+                src = c_salary
+                
+                break;
+            case "education":
+                src = c_education
+                
+                break;
+            case "transport":
+                src = c_transport
+                
+                break;
+            case "other":
+                src = c_other
+                
+                break;
+            default:
+                src = c_other
+                
+                break;
+        }
+        return src
+    }
     
     
 
@@ -64,13 +120,13 @@ const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortTyp
 
                     <div className={`${classes.HistoryContent} ${isDeletable ? classes.deletable : ''}`}>
                         <div className={`${classes.ContentIcon}  ${his.type === "income" ? classes.income : classes.expense}`}>
-                            {/*category img*/}
+                            <img src={setCategoryImage(his.category)} alt={'category'}/> 
                         </div>
 
                         <div className={classes.Content}>
                             <span className={classes.Name}>{his.name}</span>
                             <span className={classes.Description}>{his.description}</span>
-                            <span className={classes.Category}>{his.category}</span>
+                            <span className={classes.Category}>{CATEGORIES.find(item => item.value === his.category).name}</span>
                         </div>
 
                         {his.type === "income" ?

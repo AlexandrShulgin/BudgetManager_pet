@@ -2,10 +2,12 @@ import classes from './NewOperationModal.module.css'
 import MyInput from '../UI/MyInput/MyInput'
 import MyRadio from '../UI/MyCheckbox/MyRadio';
 import MyButton from '../UI/MyButton/MyButton';
+import { CATEGORIES } from '../../utils/consts';
 import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import { Context } from '../..';
+import MySelect from '../UI/MySelect/MySelect';
 /*Заменить Категорию из инпута в дропдаун*/
 
 const NewOperationModal = observer((props) => {
@@ -69,10 +71,12 @@ const NewOperationModal = observer((props) => {
                          value={hisData.description}
                          onChange={changeHandler}/>
 
-                <MyInput id={"category"} 
-                         caption={"Категория"}
-                         value={hisData.category}
-                         onChange={changeHandler}/>
+                <MySelect id={"category"}
+                          options={CATEGORIES} 
+                          defaultValue={"Категория"} 
+                          caption={"Категория"} 
+                          value={hisData.category}
+                          onChange={changeHandler}/>
 
                 Тип операции*
                 <div className={classes.RadioArea}>
