@@ -2,7 +2,6 @@ import { useContext } from "react"
 import { observer } from "mobx-react-lite"
 import { Context } from "../..";
 import classes from './WalletList.module.css'
-import MyButton from "../UI/MyButton/MyButton";
 import settingsIcon from '../../assets/images/settings.png'
 
 const WalletList = observer((props) => {

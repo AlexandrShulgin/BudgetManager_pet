@@ -18,7 +18,7 @@ const NewOperationModal = observer((props) => {
     
     const [type, setType] = useState("income")
     const [amount, setAmount] = useState(0)
-    const [hisData, setHisData] = useState({name: '', description: '', category: '', date: '', type: ''})
+    const [hisData, setHisData] = useState({name: '', description: '', category: 'other', date: '', type: ''})
     
     const changeHandler = (e) => {
         const { id, value } = e.target
@@ -50,7 +50,7 @@ const NewOperationModal = observer((props) => {
         
         setType("income")
         setAmount(0)
-        setHisData({name: '', description: '', category: '', date: '', type: ''})
+        setHisData({name: '', description: '', category: 'other', date: '', type: ''})
         props.visible(false)
     }
 
@@ -105,6 +105,7 @@ const NewOperationModal = observer((props) => {
                          required={"required"} 
                          caption={"Сумма"}
                          min={'0'}
+                         max={'100000000'}
                          onChange={(e) => setAmount(e.target.value)}
                          value={amount}/>
                          

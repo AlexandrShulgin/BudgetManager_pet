@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Context } from "../..";
 import classes from "./HistoryList.module.css"
 import { CATEGORIES } from "../../utils/consts";
+import dayjs from 'dayjs'
 
 import c_communal from "../../assets/images/c_communal.png"
 import c_credits from "../../assets/images/c_credits.png"
@@ -20,8 +21,6 @@ const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortTyp
     
     const filteredList = history.history.filter(his => his.wal_id === wallet.selectedWallet.id)
     const wal = wallet.wallets.find(item => item.id === wallet.selectedWallet.id)
-
-    const imgPath = '../../assets/images/'
 
     const listSorting = (sortType) => {
         let sortedList
@@ -115,7 +114,7 @@ const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortTyp
                 <div className={classes.HistoryItem} key={his.id} onClick={isDeletable ? () => clickHandler(his) : null}>
                     
                     <div className={classes.HistoryDate}>
-                        {index !== 0 ? (arr[index].date !== arr[index-1].date ? his.date : "") : his.date}
+                        {index !== 0 ? (arr[index].date !== arr[index-1].date ? dayjs(his.date).format('DD-MM-YYYY') : "") : dayjs(his.date).format('DD-MM-YYYY')}
                     </div>
 
                     <div className={`${classes.HistoryContent} ${isDeletable ? classes.deletable : ''}`}>

@@ -16,9 +16,17 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 20px;
         min-width: 310px;
         max-width: 370px;
         height: 100%;
+    }
+
+    .MenuHeader {
+        margin-bottom: -15px;
+        width: 340px;
+        font-size: 20px;
+        
     }
     
     

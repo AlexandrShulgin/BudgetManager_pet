@@ -1,5 +1,5 @@
 import {makeAutoObservable} from 'mobx';
-import { configure } from "mobx"
+
 
 export default class HistoryStore {
     constructor() {

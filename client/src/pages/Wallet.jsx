@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Context } from "..";
 import HistoryList from "../components/HistoryList/HistoryList";
+import NewNotificationModal from "../components/NewNotificationModal/NewNotificationModal";
 import NewOperationModal from "../components/NewOperationModal/NewOperationModal";
 import NewWalletModal from "../components/NewWalletModal/NewWalletModal";
+import NotificationList from "../components/NotificationList/NotificationList";
 import DashboardItem from "../components/UI/DashboardItem/DashboardItem";
 import MyContainer from "../components/UI/MyContainer/MyContainer";
 import MyModal from "../components/UI/MyModal/MyModal";
-import MySelect from "../components/UI/MySelect/MySelect";
 import WalletList from "../components/WalletList/WalletList";
 import WalletSettingsModal from "../components/WalletSettingsModal/WalletSettingsModal";
 import classes from "./Wallet.module.css"
@@ -37,10 +38,16 @@ const Wallet = observer(() => {
             
             {/*Menu section*/}
             <MyContainer className={classes.MenuContainer}>
+                
+                <div className={classes.MenuHeader}>Кошельки</div>
                 <WalletList clickHandler={() => clickHandler(<NewWalletModal visible={setModal}/>)}
                             settingsHandler={() => clickHandler(<WalletSettingsModal visible={setModal}/>)}/>
+                
+                <div className={classes.MenuHeader}>Напоминания</div>
+                <NotificationList clickHandler={() => clickHandler(<NewNotificationModal visible={setModal}/>)}/>
             </MyContainer>
 
+            
             <div></div>
 
             {/*Main section*/}
