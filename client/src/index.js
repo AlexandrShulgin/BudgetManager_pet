@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import HistoryStore from './store/HistoryStore';
 import NotificationStore from './store/NotificationStore';
+import StatStore from './store/StatStore';
 import UserStore from './store/UserStore';
 import WalletStore from './store/WalletStore';
 
@@ -14,7 +15,8 @@ root.render(
         user: new UserStore(),
         wallet: new WalletStore(),
         history: new HistoryStore(),
-        notification: new NotificationStore()
+        notification: new NotificationStore(),
+        stat: new StatStore(),
     }}>
         <App/>
     </Context.Provider>
