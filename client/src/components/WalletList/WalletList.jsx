@@ -1,14 +1,29 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { observer } from "mobx-react-lite"
 import { Context } from "../..";
 import classes from './WalletList.module.css'
 import settingsIcon from '../../assets/images/settings.png'
+import { getAll } from "../../http/walletAPI";
+import { useEffect } from "react";
 
 const WalletList = observer((props) => {
+
     const {wallet} = useContext(Context)
+    const {user} = useContext(Context)
+
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        getAll(user.user.id).then((data) => {
+            wallet.setWallets(data)
+            wallet.setSelectedWallet(data[0])
+        })
+        console.log(user.user.id)
+    }, [])
+    
     return (
         <div className={classes.List}>
-            {wallet.wallets.map(wal =>
+            {!loading && wallet.wallets.map(wal =>
                 <div 
                     key={wal.id}
                     className={wal.id === wallet.selectedWallet.id ? `${classes.ListItem} ${classes.active}` : classes.ListItem}

@@ -8,7 +8,6 @@ import UserStore from './store/UserStore';
 import WalletStore from './store/WalletStore';
 
 export const Context = createContext(null)
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Context.Provider value={{

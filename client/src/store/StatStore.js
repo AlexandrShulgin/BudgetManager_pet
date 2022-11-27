@@ -3,9 +3,7 @@ import {makeAutoObservable} from 'mobx';
 
 export default class StatStore {
     constructor() {
-        this._stats = [
-            
-        ]
+        this._stats = []
         makeAutoObservable(this)
     }
 

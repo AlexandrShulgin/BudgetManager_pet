@@ -3,9 +3,7 @@ import {makeAutoObservable} from 'mobx';
 
 export default class HistoryStore {
     constructor() {
-        this._history = [
-            
-        ]
+        this._history = []
         makeAutoObservable(this)
     }
 

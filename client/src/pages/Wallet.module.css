@@ -29,7 +29,36 @@
         
     }
     
-    
+    .userField {
+        display: flex;
+        justify-content: space-between;
+        width: 343px;
+        height: 50px;
+        padding: 10px 10px;
+        border-radius: 10px;
+        background-color: #FAEFF7;
+    }
+
+    .email {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-color: white;
+        border-radius: 15px;
+    }
+
+    .MyButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        height: 30px;
+        color: white;
+        background-color: rgba(255, 84, 84, 0.9);
+        border-radius: 15px;
+    }
+
     .WalletContainer {
         grid-area: 1/3;
         align-self: center;

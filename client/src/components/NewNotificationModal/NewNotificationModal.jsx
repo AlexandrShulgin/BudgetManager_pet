@@ -9,7 +9,7 @@ const NewNotificationModal = observer((props) => {
 
     const {notification} = useContext(Context)
 
-    const [notificationData, setNotificationData] = useState({id: notification.notifications[notification.notifications.length - 1]?.id + 1, name: "", date: "", amount: 0})
+    const [notificationData, setNotificationData] = useState({id: notification.notifications[notification.notifications.length - 1]?.id + 1 || 0, name: "", date: "", amount: 0})
 
     const chanheHandler = (e) => {
         const { id, value } = e.target
@@ -24,7 +24,7 @@ const NewNotificationModal = observer((props) => {
         e.preventDefault()
         notification.notifications.push(notificationData)
         props.visible(false)
-        setNotificationData({id: notification.notifications[notification.notifications.length - 1].id + 1, name: "", date: "", amount: 0})
+        setNotificationData({id: notification.notifications[notification.notifications.length - 1]?.id + 1, name: "", date: "", amount: 0})
     }
 
     return ( 

@@ -3,8 +3,8 @@ const router = new Router()
 const walletController = require('../controllers/walletController')
 
 
-router.post('/', walletController.create)
-router.get('/', walletController.getAll)
-router.get('/:id', walletController.getOne)
+router.post('/create', walletController.create)
+router.post('/destroy', walletController.destroy)
+router.get('/getall/:userId', walletController.getAll)
 
 module.exports = router

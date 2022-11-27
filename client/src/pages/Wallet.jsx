@@ -15,11 +15,15 @@ import WalletList from "../components/WalletList/WalletList";
 import WalletSettingsModal from "../components/WalletSettingsModal/WalletSettingsModal";
 import classes from "./Wallet.module.css"
 import dayjs from "dayjs";
+import { useNavigate } from "react-router";
+import { LOGIN_ROUTE } from "../utils/consts";
+
 
 const Wallet = observer(() => {
 
     const {wallet} = useContext(Context)
     const {stat} = useContext(Context)
+    const {user} = useContext(Context)
 
     const [modal, setModal] = useState(false)
     const [name, setName] = useState('name')
@@ -27,6 +31,7 @@ const Wallet = observer(() => {
     const [del, setDel] = useState(false)
     const [sortType, setSortType] = useState("fromHigherDate")
     const [statMode, setStatMode] = useState(false)
+    const nav = useNavigate()
 
     useEffect(() => {
         setName(wallet.selectedWallet.name)
@@ -45,6 +50,12 @@ const Wallet = observer(() => {
         }
     }
 
+    const logout = () => {
+        user.setUser({})
+        user.setIsAuth(false)
+        nav(LOGIN_ROUTE)
+    }
+
     const newMonth = () => {
         const wl = wallet.wallets.find(item => item.id = wallet.selectedWallet.id)
         stat.stats.push({id: stat.stats?.length, date: (dayjs().subtract(1, 'month')).format('YYYY-MM-DD'), income: wl.income, expense: wl.expense, diff: wl.income-wl.expense, wal_id: wl.id})
@@ -57,13 +68,19 @@ const Wallet = observer(() => {
             
             {/*Menu section*/}
             <MyContainer className={classes.MenuContainer}>
-                
+
+                <div className={classes.userField}>
+                    <div className={classes.email}>Email: {user.user.email}</div>
+                    <div className={`${classes.MyButton} ${classes.click}`} onClick={logout}>Выйти</div>
+                </div>
+
                 <div className={classes.MenuHeader}>Кошельки</div>
                 <WalletList clickHandler={() => clickHandler(<NewWalletModal visible={setModal}/>)}
                             settingsHandler={() => clickHandler(<WalletSettingsModal visible={setModal}/>)}/>
                 
                 <div className={classes.MenuHeader}>Напоминания</div>
                 <NotificationList clickHandler={() => clickHandler(<NewNotificationModal visible={setModal}/>)}/>
+
             </MyContainer>
 
             

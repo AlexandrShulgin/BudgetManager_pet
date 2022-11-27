@@ -3,8 +3,7 @@ import {makeAutoObservable} from 'mobx';
 
 export default class NotificationStore {
     constructor() {
-        this._notifications = [
-        ]
+        this._notifications = []
         makeAutoObservable(this)
     }
 

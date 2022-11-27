@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { Context } from '../..';
+import { create } from '../../http/walletAPI';
 import MyButton from '../UI/MyButton/MyButton';
 import MyRadio from '../UI/MyCheckbox/MyRadio';
 import MyInput from '../UI/MyInput/MyInput';
@@ -9,8 +10,9 @@ import classes from './NewWalletModal.module.css'
 const NewWalletModal = observer((props) => {
 
     const {wallet} = useContext(Context)
+    const {user} = useContext(Context)
 
-    const [walletData, setWalletData] = useState({id: wallet.wallets[wallet.wallets.length - 1].id + 1, name: "", income: 0, expense: 0, amount: 0, userId: 0})
+    const [walletData, setWalletData] = useState({name: "", income: 0, expense: 0, amount: 0, userId: user.user.id})
 
     const chanheHandler = (e) => {
         const { id, value } = e.target
@@ -21,11 +23,12 @@ const NewWalletModal = observer((props) => {
     }
     
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault()
-        wallet.wallets.push(walletData)
+        const data = await create(walletData)
+        wallet.wallets.push(data)
         props.visible(false)
-        setWalletData({id: wallet.wallets[wallet.wallets.length - 1].id + 1, name: "", income: 0, expense: 0, amount: 0, userId: 0})
+        setWalletData({name: "", income: 0, expense: 0, amount: 0, userId: user.user.id})
     }
 
     return ( 
