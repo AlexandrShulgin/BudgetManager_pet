@@ -6,8 +6,13 @@ export const create = async (walletData) => {
     return data
 }
 
+export const update = async (id, walletData) => {
+    const {data} = await $authHost.post(`api/wallet/update/${id}`, walletData)
+    return data
+}
+
 export const destroy = async (id) => {
-    const {data} = await $authHost.post('api/wallet/destroy', id)
+    const {data} = await $authHost.post(`api/wallet/destroy/${id}`)
     return data
 }
 

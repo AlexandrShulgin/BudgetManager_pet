@@ -8,17 +8,18 @@ import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import { Context } from '../..';
 import MySelect from '../UI/MySelect/MySelect';
-/*Заменить Категорию из инпута в дропдаун*/
+import { update } from '../../http/walletAPI';
 
 const NewOperationModal = observer((props) => {
 
     const {wallet} = useContext(Context)
     const {history} = useContext(Context)
-    const wal = wallet.wallets.find(item => item.id === wallet.selectedWallet.id) //Wallet with id of selectedWallet
     
     const [type, setType] = useState("income")
     const [amount, setAmount] = useState(0)
     const [hisData, setHisData] = useState({name: '', description: '', category: 'other', date: '', type: ''})
+
+    const wal = wallet.wallets.find(item => item.id === wallet.selectedWallet.id)
     
     const changeHandler = (e) => {
         const { id, value } = e.target
@@ -28,14 +29,14 @@ const NewOperationModal = observer((props) => {
         }));
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault()
         if (type === "income") {
-            wal.income += parseFloat(amount)
-            wal.amount += parseFloat(amount)
+           await update(wal.id, 
+                       {income: wal.income += parseFloat(amount), amount: wal.amount += parseFloat(amount)})
         } else {
-            wal.expense += parseFloat(amount)
-            wal.amount -= parseFloat(amount)
+            await update(wal.id, 
+                        {expense: wal.expense += parseFloat(amount),amount: wal.amount -= parseFloat(amount)})
         }
         const newHistoryItem = {id: history.history.length,
                                 wal_id: wallet.selectedWallet.id, 

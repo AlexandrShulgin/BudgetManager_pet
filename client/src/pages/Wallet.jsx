@@ -17,6 +17,7 @@ import classes from "./Wallet.module.css"
 import dayjs from "dayjs";
 import { useNavigate } from "react-router";
 import { LOGIN_ROUTE } from "../utils/consts";
+import { update } from "../http/walletAPI";
 
 
 const Wallet = observer(() => {
@@ -56,11 +57,9 @@ const Wallet = observer(() => {
         nav(LOGIN_ROUTE)
     }
 
-    const newMonth = () => {
-        const wl = wallet.wallets.find(item => item.id = wallet.selectedWallet.id)
-        stat.stats.push({id: stat.stats?.length, date: (dayjs().subtract(1, 'month')).format('YYYY-MM-DD'), income: wl.income, expense: wl.expense, diff: wl.income-wl.expense, wal_id: wl.id})
-        wl.income = 0
-        wl.expense = 0
+    const newMonth = async () => {
+        //stat.stats.push({id: stat.stats?.length, date: (dayjs().subtract(1, 'month')).format('YYYY-MM-DD'), income: wal.income, expense: wal.expense, diff: wal.income-wal.expense, wal_id: wal.id})
+        await update(wallet.selectedWallet.id, {income: 0, expense: 0})
     }
 
     return ( 

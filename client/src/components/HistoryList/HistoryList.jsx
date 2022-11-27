@@ -13,6 +13,7 @@ import c_other from "../../assets/images/c_other.png"
 import c_salary from "../../assets/images/c_salary.png"
 import c_shopping from "../../assets/images/c_shopping.png"
 import c_transport from "../../assets/images/c_transport.png"
+import { update } from "../../http/walletAPI";
 
 const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortType}) => {
 
@@ -93,14 +94,14 @@ const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortTyp
     
     
 
-    const clickHandler = (item) => {
+    const clickHandler = async (item) => {
         history.history.splice(history.history.indexOf(item), 1)
         if (item.type === "income") {
-            wal.income -= parseFloat(item.amount)
-            wal.amount -= parseFloat(item.amount)
+           await update(wal.id, 
+                       {income: wal.income -= parseFloat(item.amount), amount: wal.amount -= parseFloat(item.amount)})
         } else {
-            wal.expense -= parseFloat(item.amount)
-            wal.amount += parseFloat(item.amount)
+            await update(wal.id, 
+                        {expense: wal.expense -= parseFloat(item.amount),amount: wal.amount += parseFloat(item.amount)})
         }
         setIsDeletable(false)
     }
