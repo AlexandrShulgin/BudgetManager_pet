@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import { Context } from '../..';
 import MySelect from '../UI/MySelect/MySelect';
 import { update } from '../../http/walletAPI';
+import { create } from '../../http/historyAPI';
 
 const NewOperationModal = observer((props) => {
 
@@ -38,16 +39,16 @@ const NewOperationModal = observer((props) => {
             await update(wal.id, 
                         {expense: wal.expense += parseFloat(amount),amount: wal.amount -= parseFloat(amount)})
         }
-        const newHistoryItem = {id: history.history.length,
-                                wal_id: wallet.selectedWallet.id, 
-                                name: hisData.name, 
+        const newHistoryItem = {name: hisData.name, 
                                 description: hisData.description,
                                 category: hisData.category,
                                 date: hisData.date, 
                                 type: type, 
-                                amount: parseFloat(amount)}
-
-        history.history.push(newHistoryItem)
+                                amount: parseFloat(amount),
+                                walletId: wal.id}
+        
+        await create(newHistoryItem)
+        
         
         setType("income")
         setAmount(0)

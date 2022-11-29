@@ -18,7 +18,6 @@ const WalletList = observer((props) => {
             wallet.setWallets(data)
             wallet.setSelectedWallet(data[0])
         })
-        console.log(user.user.id)
     }, [])
     
     return (

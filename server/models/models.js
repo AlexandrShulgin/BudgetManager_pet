@@ -19,7 +19,7 @@ const History = sequelize.define('history', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,},
     name: {type: DataTypes.STRING,},
     description: {type: DataTypes.STRING,},
-    categoty: {type: DataTypes.STRING},
+    category: {type: DataTypes.STRING},
     date: {type: DataTypes.STRING,},
     type: {type: DataTypes.STRING},
     amount: {type: DataTypes.FLOAT},
