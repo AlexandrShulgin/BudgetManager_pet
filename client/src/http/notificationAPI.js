@@ -14,4 +14,3 @@ export const getAll = async (id) => {
     const {data} = await $authHost.get(`api/notification/getall/${id}`)
     return data
 }
-/* */
