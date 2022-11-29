@@ -48,7 +48,7 @@ const NewOperationModal = observer((props) => {
                                 walletId: wal.id}
         
         await create(newHistoryItem)
-        
+        history.setUpdate(hisData)
         
         setType("income")
         setAmount(0)

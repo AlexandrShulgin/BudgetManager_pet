@@ -3,7 +3,8 @@ const router = new Router()
 const notificationController = require('../controllers/notificationController')
 
 
-router.post('/', notificationController.create)
-router.get('/', notificationController.getAll)
+router.post('/create', notificationController.create)
+router.post('/destroy/:id', notificationController.destroy)
+router.get('/getall/:userId', notificationController.getAll)
 
 module.exports = router

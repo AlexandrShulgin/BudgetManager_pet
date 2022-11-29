@@ -17,7 +17,7 @@
     async destroy(req, res, next) {
         try {
             const id = req.params.id
-            const history = await history.destroy({where: {id: id}})
+            const history = await History.destroy({where: {id: id}})
             return res.json(history)
     
         } catch (e) {

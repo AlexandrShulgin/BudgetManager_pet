@@ -21,14 +21,13 @@ const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortTyp
     const {wallet} = useContext(Context)
     const {history} = useContext(Context)
     
+    const wal = wallet.wallets.find(item => item.id === wallet.selectedWallet.id)
+
     useEffect(() => {
         getAll(wal.id, sortType).then((data) => {
             history.setHistory(data)
         })
-        console.log(sortType)
-    }, [wallet.selectedWallet, history, sortType])
-
-    const wal = wallet.wallets.find(item => item.id === wallet.selectedWallet.id)
+    }, [wallet.selectedWallet, history.update, sortType])
 
     const setCategoryImage = (category) => {
         let src
@@ -75,6 +74,7 @@ const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortTyp
     
     const clickHandler = async (item) => {
         history.history.splice(history.history.indexOf(item), 1)
+        destroy(item.id)
         if (item.type === "income") {
            await update(wal.id, 
                        {income: wal.income -= parseFloat(item.amount), amount: wal.amount -= parseFloat(item.amount)})
@@ -89,8 +89,8 @@ const HistoryList = observer(({isDeletable, setIsDeletable, sortType, setSortTyp
         <div className={classes.HistoryList}>
             {history.history.length > 0 && history.history.map((his, index, arr) => 
             
-                <div className={classes.HistoryItem} key={his.id} onClick={isDeletable ? () => {clickHandler(his); destroy(his.id)} : null}>
-                    {console.log(his.id)}
+                <div className={classes.HistoryItem} key={his.id} onClick={isDeletable ? () => clickHandler(his) : null}>
+                    
                     <div className={classes.HistoryDate}>
                         {index !== 0 ? (arr[index].date !== arr[index-1].date ? dayjs(his.date).format('DD-MM-YYYY') : "") : dayjs(his.date).format('DD-MM-YYYY')}
                     </div>

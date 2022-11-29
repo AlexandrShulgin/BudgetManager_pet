@@ -16,7 +16,6 @@ export const destroy = async (id) => {
 }
 
 export const getAll = async (id) => {
-    console.log(id)
     const {data} = await $authHost.get(`api/wallet/getall/${id}`)
     return data
 }
