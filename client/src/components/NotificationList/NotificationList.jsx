@@ -30,9 +30,6 @@ dayjs.updateLocale('en', {
   }
 })
 
-const {user} = useContext(Context)
-const {notification} = useContext(Context)
-
 const NotificationList = observer((props) => {
 
     const {user} = useContext(Context)
