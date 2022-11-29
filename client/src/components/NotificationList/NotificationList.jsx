@@ -7,6 +7,8 @@ import dayjs from 'dayjs'
 import RelativeTime from 'dayjs/plugin/relativeTime'
 import updateLocale from 'dayjs/plugin/updateLocale'
 import { useEffect } from "react";
+import { getAll } from "../../http/notificationAPI";
+import { destroy } from "../../http/notificationAPI";
 
 dayjs.extend(RelativeTime)
 dayjs.extend(updateLocale)
@@ -28,7 +30,16 @@ dayjs.updateLocale('en', {
   }
 })
 
+const {user} = useContext(Context)
+const {notification} = useContext(Context)
+
 const NotificationList = observer((props) => {
+
+    useEffect(() => {
+        getAll(user.user.id).then((data) => {
+            notification.setNotifications(data)
+        })
+    }, [])
 
     const deleteHandler = (id) => {
         notification.notifications.splice(notification.notifications.indexOf(notification.notifications.find(el => el.id === id)), 1)
@@ -55,7 +66,6 @@ const NotificationList = observer((props) => {
         })
     }, [])
 
-    const {notification} = useContext(Context)
     return (
         <div className={classes.List}>
             {notification.notifications.map(notif =>
@@ -81,7 +91,7 @@ const NotificationList = observer((props) => {
                         </div>
 
                         <div className={classes.settingsButton}
-                            onClick={() => deleteHandler(notif.id)}>
+                            onClick={() => {deleteHandler(notif.id); destroy(notif.id)}}>
                                 <img src={binIcon} alt={'delete'}/>
                         </div>
                     </div>

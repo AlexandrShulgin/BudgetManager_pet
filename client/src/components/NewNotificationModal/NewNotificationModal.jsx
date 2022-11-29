@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { Context } from '../..';
+import { create } from '../../http/notificationAPI';
 import MyButton from '../UI/MyButton/MyButton';
 import MyInput from '../UI/MyInput/MyInput';
 import classes from './NewNotificationModal.module.css'
@@ -9,7 +10,7 @@ const NewNotificationModal = observer((props) => {
 
     const {notification} = useContext(Context)
 
-    const [notificationData, setNotificationData] = useState({id: notification.notifications[notification.notifications.length - 1]?.id + 1 || 0, name: "", date: "", amount: 0})
+    const [notificationData, setNotificationData] = useState({name: "", date: "", amount: 0, userId: user.user.id})
 
     const chanheHandler = (e) => {
         const { id, value } = e.target
@@ -20,11 +21,12 @@ const NewNotificationModal = observer((props) => {
     }
     
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault()
-        notification.notifications.push(notificationData)
+        const data = await create(notificationData)
+        notification.notifications.push(data)
         props.visible(false)
-        setNotificationData({id: notification.notifications[notification.notifications.length - 1]?.id + 1, name: "", date: "", amount: 0})
+        setNotificationData({name: "", date: "", amount: 0, userId: user.user.id})
     }
 
     return ( 
