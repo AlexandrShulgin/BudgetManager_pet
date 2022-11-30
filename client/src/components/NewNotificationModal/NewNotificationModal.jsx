@@ -31,7 +31,7 @@ const NewNotificationModal = observer((props) => {
 
     return ( 
         <div className={classes.NewNotificationModal}>
-            <div className={classes.Header}>Создать кошелек</div>
+            <div className={classes.Header}>Создать напоминание</div>
             <form onSubmit={submitHandler}>
                 
                 <MyInput id={'name'}

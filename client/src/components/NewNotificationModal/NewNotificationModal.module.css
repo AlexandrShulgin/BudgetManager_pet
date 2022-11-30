@@ -1,25 +1,53 @@
-.NewNotificationModal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    width: 600px;
-    padding: 30px;
-    font-weight: lighter;
-    font-size: 18px;
+@media screen and (min-width: 601px){
+    .NewNotificationModal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 600px;
+        padding: 30px;
+        font-weight: lighter;
+        font-size: 18px;
+    }
+    
+    .NewNotificationModal form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .SubmitButton {
+        width: 100%;
+        height: 42px;
+        margin-top: 25px;
+    }    
 }
 
-.NewNotificationModal form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+@media screen and (max-width: 600px){
+    .NewNotificationModal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 350px;
+        padding: 30px;
+        font-weight: lighter;
+        font-size: 18px;
+    }
+    
+    .NewNotificationModal form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .SubmitButton {
+        width: 100%;
+        height: 42px;
+        margin-top: 25px;
+    }    
 }
-
-.SubmitButton {
-    width: 100%;
-    height: 42px;
-    margin-top: 25px;
-}
-

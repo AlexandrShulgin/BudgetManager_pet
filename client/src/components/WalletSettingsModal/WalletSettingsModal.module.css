@@ -1,31 +1,67 @@
-.WalletSettingsModal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    width: 400px;
-    padding: 30px;
-    font-weight: lighter;
-    font-size: 18px;
+@media screen and (min-width: 601px){
+    .WalletSettingsModal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 400px;
+        padding: 30px;
+        font-weight: lighter;
+        font-size: 18px;
+    }
+    
+    .WalletSettingsModal form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .RenameButton {
+        width: 100%;
+        height: 42px;
+    }
+    
+    .DeleteButton {
+        width: 100%;
+        height: 42px;
+        margin-top: 25px;
+        border: 1px solid red;
+        background-color: #FD6665;
+    }
 }
 
-.WalletSettingsModal form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.RenameButton {
-    width: 100%;
-    height: 42px;
-}
-
-.DeleteButton {
-    width: 100%;
-    height: 42px;
-    margin-top: 25px;
-    border: 1px solid red;
-    background-color: #FD6665;
+@media screen and (max-width: 600px){
+    .WalletSettingsModal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 350px;
+        padding: 30px;
+        font-weight: lighter;
+        font-size: 18px;
+    }
+    
+    .WalletSettingsModal form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .RenameButton {
+        width: 100%;
+        height: 42px;
+    }
+    
+    .DeleteButton {
+        width: 100%;
+        height: 42px;
+        margin-top: 25px;
+        border: 1px solid red;
+        background-color: #FD6665;
+    }
 }

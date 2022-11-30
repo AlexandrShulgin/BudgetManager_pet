@@ -1,29 +1,63 @@
-.NewOperationModal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    width: 400px;
-    padding: 30px;
-    font-weight: lighter;
-    font-size: 18px;
+@media screen and (min-width: 601px){
+    .NewOperationModal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 400px;
+        padding: 30px;
+        font-weight: lighter;
+        font-size: 18px;
+    }
+    
+    .NewOperationModal form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .RadioArea {
+        display: flex;
+        gap: 5px;
+    }
+    
+    .SubmitButton {
+        width: 100%;
+        height: 42px;
+        margin-top: 25px;
+    }
 }
 
-.NewOperationModal form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.RadioArea {
-    display: flex;
-    gap: 5px;
-}
-
-.SubmitButton {
-    width: 100%;
-    height: 42px;
-    margin-top: 25px;
+@media screen and (max-width: 600px) {
+    .NewOperationModal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 350px;
+        padding: 30px;
+        font-weight: lighter;
+        font-size: 18px;
+    }
+    
+    .NewOperationModal form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .RadioArea {
+        display: flex;
+        gap: 5px;
+    }
+    
+    .SubmitButton {
+        width: 100%;
+        height: 42px;
+        margin-top: 25px;
+    }
 }
