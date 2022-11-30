@@ -7,15 +7,14 @@ import { observer } from 'mobx-react-lite'
 import { Context } from '../../..'
 
 const DashboardItem = observer((props) => {
-
+    const {stat} = useContext(Context)
     const {wallet} = useContext(Context)
     const wal = wallet.wallets.find(item => item.id === wallet.selectedWallet.id)
     const [money, setMoney] = useState({income: wal.income, expense: wal.expense, amount: wal.amount})
 
     useEffect(() => {
         setMoney({income: wal.income, expense: wal.expense, amount: wal.amount})
-    }, [wal, wal.name, wal.income, wal.expense, wal.amount
-    ])
+    }, [wal, wal.name, wal.income, wal.expense, wal.amount, stat.update])
 
     return ( 
         <div className={classes.DashboardItem}>

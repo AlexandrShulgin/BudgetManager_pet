@@ -6,7 +6,7 @@ class StatController {
    async create(req, res, next) {
        try {
            const {date, income, expense, diff, walletId} = req.body
-           const stat = await History.create({date, income, expense, diff, walletId})
+           const stat = await Stat.create({date, income, expense, diff, walletId})
            return res.json(stat)
        
        } catch (e) {
@@ -17,8 +17,8 @@ class StatController {
 
    async getAll(req, res) {
        let stats;
-       const {walletId} = req.body
-       stats = await Stat.findAll({where: {walletId}})
+       const walletId = req.params.walletId
+       stats = await Stat.findAll({where: {walletId: walletId}})
        return res.json(stats)
    }
 }

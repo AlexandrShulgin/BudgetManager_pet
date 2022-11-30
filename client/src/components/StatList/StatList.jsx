@@ -3,18 +3,26 @@ import { useContext } from "react";
 import { Context } from "../..";
 import classes from "./StatList.module.css"
 import dayjs from 'dayjs'
+import { useEffect } from "react";
+import { getAll } from "../../http/statAPI";
 
 const StatList = observer(() => {
 
     const {wallet} = useContext(Context)
     const {stat} = useContext(Context)
     
-    const filteredList = stat.stats.filter(stat => stat.wal_id === wallet.selectedWallet.id)
+    const wal = wallet.wallets.find(item => item.id === wallet.selectedWallet.id)
+
+    useEffect(() => {
+        getAll(wal.id).then((data) => {
+            stat.setStats(data)
+        })
+    }, [wallet.selectedWallet, stat.update])
 
     return ( 
         <div className={classes.StatList}>
 
-            {filteredList.length > 0 && filteredList.map((stat, index, arr) => 
+            {stat.stats.length > 0 && stat.stats.map((stat, index, arr) => 
                 
                 <div className={classes.StatItem} key={stat.id}>
                     
@@ -35,7 +43,7 @@ const StatList = observer(() => {
                 </div>
             )}
 
-            {filteredList.length === 0 && 
+            {stat.stats.length === 0 && 
                 <div className={classes.NoData}>
                     <span>Пока что здесь пусто, в конце месяца появится запись.</span>
                 </div>

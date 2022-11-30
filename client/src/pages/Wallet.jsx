@@ -18,12 +18,12 @@ import dayjs from "dayjs";
 import { useNavigate } from "react-router";
 import { LOGIN_ROUTE } from "../utils/consts";
 import { update } from "../http/walletAPI";
+import { create } from "../http/statAPI";
 
 
 const Wallet = observer(() => {
 
     const {wallet} = useContext(Context)
-    const {stat} = useContext(Context)
     const {user} = useContext(Context)
 
     const [modal, setModal] = useState(false)
@@ -58,8 +58,9 @@ const Wallet = observer(() => {
     }
 
     const newMonth = async () => {
-        //stat.stats.push({id: stat.stats?.length, date: (dayjs().subtract(1, 'month')).format('YYYY-MM-DD'), income: wal.income, expense: wal.expense, diff: wal.income-wal.expense, wal_id: wal.id})
-        await update(wallet.selectedWallet.id, {income: 0, expense: 0})
+        const wal = wallet.selectedWallet
+        await create({date: (dayjs().subtract(1, 'month')).format('YYYY-MM-DD'), income: wal.income, expense: wal.expense, diff: wal.income-wal.expense, walletId: wal.id})
+        await update(wal.id, {income: 0, expense: 0})
     }
 
     return ( 
@@ -97,8 +98,7 @@ const Wallet = observer(() => {
                             Добавить операцию
                         </MyContainer>
                         <MyContainer className={classes.click} clickHandler={() => del === true ? setDel(false) : setDel(true)}>Удалить операцию</MyContainer>
-                        <MyContainer clickHandler={newMonth}>Новый месяц</MyContainer>
-                        {/*<MyContainer>Режим прогноза</MyContainer>*/}
+                        <MyContainer className={classes.click} clickHandler={newMonth}>Новый месяц</MyContainer>
                     </div>
                     <MyContainer className={classes.Dashboard}>
                         <DashboardItem type={"income"}/>
