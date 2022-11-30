@@ -73,7 +73,7 @@ const Wallet = observer(() => {
                     <div className={classes.email}>Email: {user.user.email}</div>
                     <div className={`${classes.MyButton} ${classes.click}`} onClick={logout}>Выйти</div>
                 </div>
-
+                
                 <div className={classes.MenuHeader}>Кошельки</div>
                 <WalletList clickHandler={() => clickHandler(<NewWalletModal visible={setModal}/>)}
                             settingsHandler={() => clickHandler(<WalletSettingsModal visible={setModal}/>)}/>
