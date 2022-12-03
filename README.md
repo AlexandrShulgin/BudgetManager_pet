@@ -1,6 +1,7 @@
 # BudgetManager
 Мой pet-проект для контроля финансов
-[bm-client-lfkl.vercel.app](bm-client-lfkl.vercel.app)
+[bm-client-lfkl.vercel.app](bm-client-lfkl.vercel.app)  
+(сервер на бесплатном хостинге, может долго грузить)
 ## Front-end
 React  
 MobX  
